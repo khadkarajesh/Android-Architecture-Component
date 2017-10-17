@@ -3,6 +3,11 @@ package com.crushcoder.moviesmvvm;
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
 
+import com.crushcoder.moviesmvvm.BuildConfig;
+import com.crushcoder.moviesmvvm.Movie;
+import com.crushcoder.moviesmvvm.rest.ApiService;
+import com.crushcoder.moviesmvvm.rest.base.BaseObserver;
+
 import java.util.ArrayList;
 import java.util.List;
 

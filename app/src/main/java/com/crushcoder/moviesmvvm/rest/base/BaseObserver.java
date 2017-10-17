@@ -1,8 +1,9 @@
-package com.crushcoder.moviesmvvm;
+package com.crushcoder.moviesmvvm.rest.base;
 
 import android.content.Context;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.crushcoder.moviesmvvm.rest.WrappedError;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

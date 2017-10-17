@@ -1,4 +1,4 @@
-package com.crushcoder.moviesmvvm;
+package com.crushcoder.moviesmvvm.rest;
 
 
 import okhttp3.OkHttpClient;

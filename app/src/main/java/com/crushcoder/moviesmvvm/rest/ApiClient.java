@@ -1,5 +1,7 @@
-package com.crushcoder.moviesmvvm;
+package com.crushcoder.moviesmvvm.rest;
 
+
+import com.crushcoder.moviesmvvm.Movie;
 
 import java.util.List;
 

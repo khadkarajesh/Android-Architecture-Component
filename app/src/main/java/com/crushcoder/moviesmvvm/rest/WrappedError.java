@@ -1,4 +1,4 @@
-package com.crushcoder.moviesmvvm;
+package com.crushcoder.moviesmvvm.rest;
 
 
 public class WrappedError extends Throwable {

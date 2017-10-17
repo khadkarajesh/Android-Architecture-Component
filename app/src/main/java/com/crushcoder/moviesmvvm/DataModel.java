@@ -1,6 +1,8 @@
 package com.crushcoder.moviesmvvm;
 
 
+import com.crushcoder.moviesmvvm.rest.ApiService;
+
 import java.util.List;
 
 import io.reactivex.Observable;
