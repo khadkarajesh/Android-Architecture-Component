@@ -25,7 +25,6 @@ public class UnwrapConverterFactory extends Converter.Factory {
         Type wrappedType = new ParameterizedType() {
             @Override
             public Type[] getActualTypeArguments() {
-                // -> WrappedResponse<type>
                 return new Type[]{type};
             }
 

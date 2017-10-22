@@ -3,17 +3,8 @@ package com.crushcoder.moviesmvvm;
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
 
-import com.crushcoder.moviesmvvm.BuildConfig;
-import com.crushcoder.moviesmvvm.Movie;
-import com.crushcoder.moviesmvvm.rest.ApiService;
-import com.crushcoder.moviesmvvm.rest.base.BaseObserver;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
-import timber.log.Timber;
 
 
 public class MovieLiveData extends LiveData<List<Movie>> {
@@ -25,16 +16,16 @@ public class MovieLiveData extends LiveData<List<Movie>> {
     }
 
     public void getMovies() {
-        ApiService.INSTANCE.get()
-                .getMoviesInfo("popular", 1, BuildConfig.MOVIE_API_KEY)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new BaseObserver<List<Movie>>(mContext) {
-                    @Override
-                    public void onSuccess(List<Movie> movies) {
-                        Timber.d("data list " + movies.size());
-                    }
-                });
+//        ApiService.INSTANCE.get()
+//                .getMoviesInfo("popular", 1, BuildConfig.MOVIE_API_KEY)
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.io())
+//                .subscribe(new BaseObserver<List<Movie>>(mContext) {
+//                    @Override
+//                    public void onSuccess(List<Movie> movies) {
+//                        Timber.d("data list " + movies.size());
+//                    }
+//                });
 
     }
 

@@ -3,11 +3,9 @@ package com.crushcoder.moviesmvvm.rest.base;
 import android.content.Context;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.crushcoder.moviesmvvm.rest.WrappedError;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import retrofit2.HttpException;
 
 public abstract class BaseObserver<T> implements Observer<T> {
     private Context activity;
@@ -15,10 +13,10 @@ public abstract class BaseObserver<T> implements Observer<T> {
 
     public BaseObserver(Context context) {
         this.activity = context;
-        materialDialog = new MaterialDialog.Builder(activity)
-                .content("Please wait..")
-                .progress(true, 0)
-                .show();
+//        materialDialog = new MaterialDialog.Builder(activity)
+//                .content("Please wait..")
+//                .progress(true, 0)
+//                .show();
     }
 
     @Override
@@ -28,23 +26,25 @@ public abstract class BaseObserver<T> implements Observer<T> {
 
     @Override
     public void onNext(T t) {
-        materialDialog.dismiss();
+        //materialDialog.dismiss();
         onSuccess(t);
     }
 
     @Override
     public void onError(Throwable e) {
-        materialDialog.dismiss();
-        if (e instanceof HttpException) {
-
-        } else if (e instanceof WrappedError) {
+        //materialDialog.dismiss();
+        if (e instanceof RuntimeException) {
+//            new MaterialDialog.Builder(activity)
+//                    .title("error")
+//                    .content(e.getLocalizedMessage())
+//                    .show();
         }
     }
 
     @Override
     public void onComplete() {
         //hide progressbar
-        materialDialog.dismiss();
+        //materialDialog.dismiss();
     }
 
 

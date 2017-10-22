@@ -21,7 +21,6 @@ public enum ApiService {
         retrofit = new Retrofit.Builder()
                 .client(client)
                 .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(new UnwrapConverterFactory(GsonConverterFactory.create()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
@@ -35,6 +34,5 @@ public enum ApiService {
     public HttpLoggingInterceptor getLogger() {
         return new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
     }
-
 }
 
