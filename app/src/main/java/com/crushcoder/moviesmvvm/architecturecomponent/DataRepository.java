@@ -8,10 +8,11 @@ import android.arch.lifecycle.MutableLiveData;
 import com.crushcoder.moviesmvvm.BuildConfig;
 import com.crushcoder.moviesmvvm.Movie;
 import com.crushcoder.moviesmvvm.rest.ApiClient;
-import com.crushcoder.moviesmvvm.rest.ApiService;
 import com.crushcoder.moviesmvvm.rest.base.BaseObserver;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -22,8 +23,10 @@ public class DataRepository extends LiveData {
     private Activity mContext;
     private Disposable disposable;
 
-    public DataRepository() {
-        mApiClient = ApiService.INSTANCE.get();
+    @Inject
+    public DataRepository(ApiClient apiClient) {
+        //mApiClient = ApiService.INSTANCE.get();
+        mApiClient = apiClient;
     }
 
     public LiveData<List<Movie>> getMovies() {

@@ -7,13 +7,12 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public enum ApiService {
-    INSTANCE;
+public class ApiService {
     private final String BASE_URL = "http://api.themoviedb.org/";
     private Retrofit retrofit;
     private ApiClient mApi;
 
-    ApiService() {
+    public ApiService() {
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(getLogger())
                 .build();
