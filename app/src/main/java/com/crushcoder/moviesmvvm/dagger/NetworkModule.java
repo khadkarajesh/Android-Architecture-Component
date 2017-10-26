@@ -6,7 +6,7 @@ import com.crushcoder.moviesmvvm.rest.ApiService;
 import dagger.Module;
 import dagger.Provides;
 
-@Module
+@Module(includes = {ViewModelModule.class})
 public class NetworkModule {
     @Provides
     ApiClient provideApi() {

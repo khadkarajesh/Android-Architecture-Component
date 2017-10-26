@@ -1,15 +1,19 @@
 package com.crushcoder.moviesmvvm.architecturecomponent;
 
 import android.app.Fragment;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.crushcoder.moviesmvvm.R;
-import com.crushcoder.moviesmvvm.fragment.MovieFragment;
 import com.crushcoder.moviesmvvm.rest.ApiClient;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -29,18 +33,26 @@ public class MovieListActivity extends AppCompatActivity implements HasFragmentI
     @Inject
     ApiClient apiClient;
 
+    @Inject
+    ViewModelProvider.Factory viewModelFactory;
+
+    @Inject
+    MovieModel movieModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_list);
 
-//        recyclerView = findViewById(R.id.movie_rv_movies);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        movieAdapter = new MovieAdapter(this, new ArrayList<>());
-//        recyclerView.setAdapter(movieAdapter);
+        recyclerView = findViewById(R.id.movie_rv_movies);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        movieAdapter = new MovieAdapter(this, new ArrayList<>());
+        recyclerView.setAdapter(movieAdapter);
 
-        getFragmentManager().beginTransaction().add(R.id.movie_ll_container, new MovieFragment()).commit();
+
+        movieModel = ViewModelProviders.of(this, viewModelFactory).get(MovieModel.class);
+        movieModel.getMovies().observe(this, movies -> movieAdapter.addMovies(movies));
     }
 
     public static void start(Context context) {
