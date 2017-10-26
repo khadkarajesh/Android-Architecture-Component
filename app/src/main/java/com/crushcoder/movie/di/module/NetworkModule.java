@@ -4,6 +4,7 @@ import com.crushcoder.movie.BuildConfig;
 import com.crushcoder.movie.di.ViewModelModule;
 import com.crushcoder.movie.service.ApiService;
 import com.crushcoder.movie.service.ApiClient;
+import com.crushcoder.movie.service.UnwrapConverterFactory;
 import com.google.gson.Gson;
 
 import java.util.concurrent.TimeUnit;
@@ -57,7 +58,7 @@ public class NetworkModule {
     Retrofit providesRetrofit(GsonConverterFactory gsonConverterFactory, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .baseUrl("http://api.themoviedb.org/")
-                .addConverterFactory(gsonConverterFactory)
+                .addConverterFactory(new UnwrapConverterFactory(gsonConverterFactory))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)
                 .build();

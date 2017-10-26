@@ -4,8 +4,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.crushcoder.movie.BuildConfig;
-import com.crushcoder.movie.service.ApiService;
+import com.crushcoder.movie.service.ApiClient;
 import com.crushcoder.movie.service.response.Movie;
 
 import java.util.List;
@@ -19,16 +18,16 @@ import io.reactivex.schedulers.Schedulers;
 
 
 public class MovieViewModel extends ViewModel {
-    ApiService apiService;
+    ApiClient apiClient;
     MutableLiveData<List<Movie>> listLiveData = new MutableLiveData<>();
 
     @Inject
-    public MovieViewModel(ApiService apiService) {
-        this.apiService = apiService;
+    public MovieViewModel(ApiClient apiClient) {
+        this.apiClient = apiClient;
     }
 
     public LiveData<List<Movie>> getMovies() {
-        apiService.getMoviesInfo("popular", 1, BuildConfig.MOVIE_API_KEY)
+        apiClient.getMovies("popular", 1)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<List<Movie>>() {
