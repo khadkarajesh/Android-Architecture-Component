@@ -1,7 +1,5 @@
 package com.crushcoder.moviesmvvm.architecturecomponent;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,11 +21,6 @@ public class MovieListActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     MovieAdapter movieAdapter;
 
-    MovieModel movieModel;
-
-    @Inject
-    ViewModelProvider.Factory mViewModelFactory;
-
     @Inject
     ApiClient apiClient;
 
@@ -41,10 +34,6 @@ public class MovieListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         movieAdapter = new MovieAdapter(this, new ArrayList<>());
         recyclerView.setAdapter(movieAdapter);
-
-        movieModel = ViewModelProviders.of(this, mViewModelFactory).get(MovieModel.class);
-
-        movieModel.getMovies().observe(this, movies -> movieAdapter.addMovies(movies));
     }
 
     public static void start(Context context) {

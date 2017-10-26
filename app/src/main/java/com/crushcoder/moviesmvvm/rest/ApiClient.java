@@ -14,6 +14,9 @@ public interface ApiClient {
     @GET("3/movie/{categories}")
     Observable<List<Movie>> getMoviesInfo(@Path("categories") String categories, @Query("page") int page, @Query("api_key") String apiKey);
 
+    @GET("3/movie/{categories}")
+    Observable<ApiResponse> getMovies(@Path("categories") String categories, @Query("page") int page, @Query("api_key") String apiKey);
+
 //    @GET("3/movie/{id}/reviews")
 //    Observable<MovieComments> getComments(@Path("id") int id, @Query("api_key") String apiKey);
 //

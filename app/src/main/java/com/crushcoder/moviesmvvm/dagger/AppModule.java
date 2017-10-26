@@ -1,35 +1,17 @@
 package com.crushcoder.moviesmvvm.dagger;
 
 
-import android.app.Application;
-import android.content.Context;
-
-import com.crushcoder.moviesmvvm.architecturecomponent.DataRepository;
-import com.crushcoder.moviesmvvm.rest.ApiClient;
-import com.crushcoder.moviesmvvm.rest.ApiService;
-
-import javax.inject.Singleton;
+import com.crushcoder.moviesmvvm.MovieActivity;
+import com.crushcoder.moviesmvvm.architecturecomponent.MovieListActivity;
 
 import dagger.Module;
-import dagger.Provides;
+import dagger.android.ContributesAndroidInjector;
 
-@Module(includes = MovieActivityModule.class)
-public class AppModule {
-    @Provides
-    @Singleton
-    Context provideContext(Application application) {
-        return application;
-    }
+@Module
+public abstract class AppModule {
+    @ContributesAndroidInjector
+    abstract MovieListActivity contributeActivityInjector();
 
-    @Provides
-    @Singleton
-    ApiClient provideApiClient() {
-        return new ApiService().get();
-    }
-
-    @Provides
-    @Singleton
-    DataRepository provideDataRepository(ApiClient apiClient) {
-        return new DataRepository(apiClient);
-    }
+    @ContributesAndroidInjector
+    abstract MovieActivity contributeMovieActivity();
 }

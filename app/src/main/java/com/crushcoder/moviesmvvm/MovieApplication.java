@@ -30,7 +30,6 @@ public class MovieApplication extends Application implements HasActivityInjector
 
     private void initializeComponent() {
         DaggerAppComponent.builder()
-                .application(this)
                 .build()
                 .inject(this);
     }
