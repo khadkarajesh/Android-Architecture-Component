@@ -1,5 +1,6 @@
-package com.crushcoder.movie.dagger;
+package com.crushcoder.movie.di.module;
 
+import com.crushcoder.movie.di.ViewModelModule;
 import com.crushcoder.movie.rest.ApiClient;
 import com.crushcoder.movie.rest.ApiService;
 

@@ -1,4 +1,4 @@
-package com.crushcoder.movie.dagger;
+package com.crushcoder.movie.di.module;
 
 
 import com.crushcoder.movie.architecturecomponent.MovieListActivity;
@@ -8,7 +8,7 @@ import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
 @Module
-public abstract class AppModule {
+public abstract class ActivityBuilder {
     @ContributesAndroidInjector
     abstract MovieListActivity contributeActivityInjector();
 

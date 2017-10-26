@@ -1,4 +1,4 @@
-package com.crushcoder.movie.dagger;
+package com.crushcoder.movie.di;
 
 
 import android.arch.lifecycle.ViewModel;

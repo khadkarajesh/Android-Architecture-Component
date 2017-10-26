@@ -1,4 +1,4 @@
-package com.crushcoder.movie.dagger;
+package com.crushcoder.movie.di;
 
 
 import android.arch.lifecycle.ViewModel;
@@ -15,6 +15,6 @@ import dagger.MapKey;
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @MapKey
-@interface ViewModelKey {
+public @interface ViewModelKey {
     Class<? extends ViewModel> value();
 }
