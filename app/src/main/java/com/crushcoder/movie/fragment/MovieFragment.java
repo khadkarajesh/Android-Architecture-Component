@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.crushcoder.movie.R;
-import com.crushcoder.movie.rest.ApiClient;
+import com.crushcoder.movie.service.ApiClient;
 
 import javax.inject.Inject;
 

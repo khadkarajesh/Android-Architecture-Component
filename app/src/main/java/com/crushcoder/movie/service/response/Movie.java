@@ -1,4 +1,4 @@
-package com.crushcoder.movie;
+package com.crushcoder.movie.service.response;
 
 
 public class Movie {

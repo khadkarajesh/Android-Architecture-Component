@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
-import com.crushcoder.movie.dagger.DaggerAppComponent;
+import com.crushcoder.movie.di.component.DaggerAppComponent;
 
 import javax.inject.Inject;
 

@@ -1,4 +1,4 @@
-package com.crushcoder.movie.architecturecomponent;
+package com.crushcoder.movie.ui.movie;
 
 import android.app.Fragment;
 import android.arch.lifecycle.ViewModelProvider;
@@ -11,7 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.crushcoder.movie.R;
-import com.crushcoder.movie.rest.ApiClient;
+import com.crushcoder.movie.service.ApiClient;
 
 import java.util.ArrayList;
 
@@ -26,7 +26,7 @@ public class MovieListActivity extends AppCompatActivity implements HasFragmentI
 
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
-    //MovieModel movieModel;
+    //MovieViewModel movieViewModel;
     RecyclerView recyclerView;
     MovieAdapter movieAdapter;
 
@@ -37,7 +37,7 @@ public class MovieListActivity extends AppCompatActivity implements HasFragmentI
     ViewModelProvider.Factory viewModelFactory;
 
     @Inject
-    MovieModel movieModel;
+    MovieViewModel movieViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +51,8 @@ public class MovieListActivity extends AppCompatActivity implements HasFragmentI
         recyclerView.setAdapter(movieAdapter);
 
 
-        movieModel = ViewModelProviders.of(this, viewModelFactory).get(MovieModel.class);
-        movieModel.getMovies().observe(this, movies -> movieAdapter.addMovies(movies));
+        movieViewModel = ViewModelProviders.of(this, viewModelFactory).get(MovieViewModel.class);
+        movieViewModel.getMovies().observe(this, movies -> movieAdapter.addMovies(movies));
     }
 
     public static void start(Context context) {

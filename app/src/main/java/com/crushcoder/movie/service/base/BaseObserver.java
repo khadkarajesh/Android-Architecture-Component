@@ -1,4 +1,4 @@
-package com.crushcoder.movie.rest.base;
+package com.crushcoder.movie.service.base;
 
 import android.content.Context;
 

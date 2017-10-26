@@ -1,4 +1,4 @@
-package com.crushcoder.movie.architecturecomponent;
+package com.crushcoder.movie.ui.movie;
 
 import android.app.Activity;
 import android.arch.lifecycle.LiveData;
@@ -6,8 +6,9 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.crushcoder.movie.BuildConfig;
-import com.crushcoder.movie.Movie;
-import com.crushcoder.movie.rest.ApiClient;
+import com.crushcoder.movie.architecturecomponent.DataRepository;
+import com.crushcoder.movie.service.response.Movie;
+import com.crushcoder.movie.service.ApiClient;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 
-public class MovieModel extends ViewModel {
+public class MovieViewModel extends ViewModel {
     private Activity activity;
 
     @Inject
@@ -30,7 +31,7 @@ public class MovieModel extends ViewModel {
     MutableLiveData<List<Movie>> listLiveData = new MutableLiveData<>();
 
     @Inject
-    public MovieModel(ApiClient apiClient) {
+    public MovieViewModel(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 

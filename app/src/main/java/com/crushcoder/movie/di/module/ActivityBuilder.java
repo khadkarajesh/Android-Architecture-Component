@@ -1,7 +1,7 @@
 package com.crushcoder.movie.di.module;
 
 
-import com.crushcoder.movie.architecturecomponent.MovieListActivity;
+import com.crushcoder.movie.ui.movie.MovieListActivity;
 import com.crushcoder.movie.fragment.MovieFragment;
 
 import dagger.Module;

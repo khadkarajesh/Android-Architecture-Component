@@ -1,4 +1,4 @@
-package com.crushcoder.movie.architecturecomponent;
+package com.crushcoder.movie.ui.movie;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.crushcoder.movie.Movie;
+import com.crushcoder.movie.service.response.Movie;
 import com.crushcoder.movie.R;
 
 import java.util.List;

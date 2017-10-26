@@ -6,9 +6,9 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
 import com.crushcoder.movie.BuildConfig;
-import com.crushcoder.movie.Movie;
-import com.crushcoder.movie.rest.ApiClient;
-import com.crushcoder.movie.rest.base.BaseObserver;
+import com.crushcoder.movie.service.response.Movie;
+import com.crushcoder.movie.service.ApiClient;
+import com.crushcoder.movie.service.base.BaseObserver;
 
 import java.util.List;
 

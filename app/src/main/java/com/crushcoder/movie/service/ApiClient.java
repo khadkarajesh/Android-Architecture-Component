@@ -1,7 +1,7 @@
-package com.crushcoder.movie.rest;
+package com.crushcoder.movie.service;
 
 
-import com.crushcoder.movie.Movie;
+import com.crushcoder.movie.service.response.Movie;
 
 import java.util.List;
 
