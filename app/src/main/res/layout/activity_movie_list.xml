@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/movie_rv_movies"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/movie_ll_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:mContext="com.crushcoder.moviesmvvm.architecturecomponent.MovieListActivity" />
+    android:orientation="vertical">
+
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/movie_rv_movies"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:mContext="com.crushcoder.moviesmvvm.architecturecomponent.MovieListActivity" />-->
+</LinearLayout>
 
