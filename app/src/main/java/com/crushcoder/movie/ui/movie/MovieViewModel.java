@@ -1,14 +1,12 @@
 package com.crushcoder.movie.ui.movie;
 
-import android.app.Activity;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.crushcoder.movie.BuildConfig;
-import com.crushcoder.movie.architecturecomponent.DataRepository;
-import com.crushcoder.movie.service.response.Movie;
 import com.crushcoder.movie.service.ApiClient;
+import com.crushcoder.movie.service.response.Movie;
 
 import java.util.List;
 
@@ -21,13 +19,7 @@ import io.reactivex.schedulers.Schedulers;
 
 
 public class MovieViewModel extends ViewModel {
-    private Activity activity;
-
-    @Inject
-    DataRepository mDataRepository;
-
     ApiClient apiClient;
-
     MutableLiveData<List<Movie>> listLiveData = new MutableLiveData<>();
 
     @Inject

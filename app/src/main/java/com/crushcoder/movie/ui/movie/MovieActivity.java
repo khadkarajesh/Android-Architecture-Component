@@ -11,7 +11,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.crushcoder.movie.R;
-import com.crushcoder.movie.service.ApiClient;
 
 import java.util.ArrayList;
 
@@ -22,16 +21,12 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasFragmentInjector;
 
-public class MovieListActivity extends AppCompatActivity implements HasFragmentInjector {
+public class MovieActivity extends AppCompatActivity implements HasFragmentInjector {
 
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
-    //MovieViewModel movieViewModel;
     RecyclerView recyclerView;
     MovieAdapter movieAdapter;
-
-    @Inject
-    ApiClient apiClient;
 
     @Inject
     ViewModelProvider.Factory viewModelFactory;
@@ -44,19 +39,21 @@ public class MovieListActivity extends AppCompatActivity implements HasFragmentI
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_list);
-
-        recyclerView = findViewById(R.id.movie_rv_movies);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        movieAdapter = new MovieAdapter(this, new ArrayList<>());
-        recyclerView.setAdapter(movieAdapter);
-
+        initializeAdapter();
 
         movieViewModel = ViewModelProviders.of(this, viewModelFactory).get(MovieViewModel.class);
         movieViewModel.getMovies().observe(this, movies -> movieAdapter.addMovies(movies));
     }
 
+    private void initializeAdapter() {
+        recyclerView = findViewById(R.id.movie_rv_movies);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        movieAdapter = new MovieAdapter(this, new ArrayList<>());
+        recyclerView.setAdapter(movieAdapter);
+    }
+
     public static void start(Context context) {
-        Intent intent = new Intent(context, MovieListActivity.class);
+        Intent intent = new Intent(context, MovieActivity.class);
         context.startActivity(intent);
     }
 

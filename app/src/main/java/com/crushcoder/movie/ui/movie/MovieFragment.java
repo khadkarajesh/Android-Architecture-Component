@@ -1,4 +1,4 @@
-package com.crushcoder.movie.fragment;
+package com.crushcoder.movie.ui.movie;
 
 
 import android.app.Fragment;
@@ -44,7 +44,5 @@ public class MovieFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Timber.d("apiClient " + apiClient);
-
-
     }
 }
