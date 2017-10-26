@@ -1,37 +1,18 @@
 package com.crushcoder.movie.service;
 
 
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
+import com.crushcoder.movie.service.response.Movie;
 
-public class ApiService {
-    private final String BASE_URL = "http://api.themoviedb.org/";
-    private Retrofit retrofit;
-    private ApiClient mApi;
+import java.util.List;
 
-    public ApiService() {
-        OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(getLogger())
-                .build();
+import io.reactivex.Observable;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
-        retrofit = new Retrofit.Builder()
-                .client(client)
-                .baseUrl(BASE_URL)
-                .addConverterFactory(new UnwrapConverterFactory(GsonConverterFactory.create()))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
-        mApi = retrofit.create(ApiClient.class);
-    }
-
-    public ApiClient get() {
-        return mApi;
-    }
-
-    public HttpLoggingInterceptor getLogger() {
-        return new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
-    }
+public interface ApiService {
+    @GET("3/movie/{categories}")
+    Observable<List<Movie>> getMoviesInfo(@Path("categories") String categories,
+                                          @Query("page") int page,
+                                          @Query("api_key") String apiKey);
 }
-

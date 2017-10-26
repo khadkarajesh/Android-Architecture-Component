@@ -1,25 +1,25 @@
 package com.crushcoder.movie.service;
 
 
+import com.crushcoder.movie.BuildConfig;
 import com.crushcoder.movie.service.response.Movie;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
 
-public interface ApiClient {
-    @GET("3/movie/{categories}")
-    Observable<List<Movie>> getMoviesInfo(@Path("categories") String categories, @Query("page") int page, @Query("api_key") String apiKey);
+public class ApiClient {
+    private ApiService service;
 
-    @GET("3/movie/{categories}")
-    Observable<ApiResponse> getMovies(@Path("categories") String categories, @Query("page") int page, @Query("api_key") String apiKey);
+    @Inject
+    public ApiClient(ApiService apiService) {
+        this.service = apiService;
+    }
 
-//    @GET("3/movie/{id}/reviews")
-//    Observable<MovieComments> getComments(@Path("id") int id, @Query("api_key") String apiKey);
-//
-//    @GET("3/movie/{id}/videos")
-//    Observable<MovieTrailerInfo> getMovieTrailer(@Path("id") int id, @Query("api_key") String apiKey);
+    public Observable<List<Movie>> getMovies(String categories, int page){
+        return service.getMoviesInfo(categories, page, BuildConfig.MOVIE_API_KEY);
+    }
 }
+

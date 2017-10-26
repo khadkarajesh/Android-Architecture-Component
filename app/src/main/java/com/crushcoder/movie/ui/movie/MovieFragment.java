@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.crushcoder.movie.R;
-import com.crushcoder.movie.service.ApiClient;
+import com.crushcoder.movie.service.ApiService;
 
 import javax.inject.Inject;
 
@@ -25,7 +25,7 @@ public class MovieFragment extends Fragment {
     }
 
     @Inject
-    ApiClient apiClient;
+    ApiService apiService;
 
     @Override
     public void onAttach(Context context) {
@@ -43,6 +43,6 @@ public class MovieFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Timber.d("apiClient " + apiClient);
+        Timber.d("apiService " + apiService);
     }
 }
