@@ -1,6 +1,7 @@
 package com.crushcoder.movie.di.module;
 
 
+import com.crushcoder.movie.ui.login.LoginActivity;
 import com.crushcoder.movie.ui.movie.MovieActivity;
 import com.crushcoder.movie.ui.movie.MovieFragment;
 
@@ -11,6 +12,9 @@ import dagger.android.ContributesAndroidInjector;
 public abstract class ActivityBuilder {
     @ContributesAndroidInjector
     abstract MovieActivity contributeActivityInjector();
+
+    @ContributesAndroidInjector
+    abstract LoginActivity contributeLoginActivity();
 
     @ContributesAndroidInjector
     abstract MovieFragment movieFragment();
