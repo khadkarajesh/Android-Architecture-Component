@@ -15,3 +15,6 @@ MVVM architecture has been implemented using google's new architecture component
 3. https://github.com/googlesamples/android-architecture/blob/dev-todo-mvvm-live/todoapp/app/src/mock/java/com/example/android/architecture/blueprints/todoapp/Injection.java
 4. https://github.com/hazems/mvvm-sample-app
 5. https://github.com/googlesamples/android-architecture
+
+## Contribution
+There lot more things to cover here including testing to optimization. If you want to contribute on project, please feel free to open a pull request's and issues.
