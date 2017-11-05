@@ -2,21 +2,17 @@ package com.crushcoder.movie.ui.movie;
 
 import android.content.Context;
 import android.databinding.BindingAdapter;
-import android.databinding.DataBindingUtil;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.crushcoder.movie.R;
-import com.crushcoder.movie.databinding.ViewMovieAdapterSingleMovieLayoutBinding;
 import com.crushcoder.movie.service.response.Movie;
+import com.crushcoder.movie.ui.adapter.BaseAdapter;
 
 import java.util.List;
 
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
+public class MovieAdapter extends BaseAdapter {
     private final Context mContext;
     private List<Movie> mMovies;
 
@@ -26,17 +22,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewMovieAdapterSingleMovieLayoutBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
-                R.layout.view_movie_adapter_single_movie_layout,
-                parent,
-                false);
-        return new ViewHolder(binding);
+    public int getLayoutId(int viewType) {
+        return R.layout.view_movie_adapter_single_movie_layout;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(mMovies.get(position));
+    public Object getItemAtPosition(int position) {
+        return mMovies.get(position);
     }
 
     @Override
@@ -49,21 +41,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         mMovies.addAll(movies);
         notifyDataSetChanged();
     }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private ViewMovieAdapterSingleMovieLayoutBinding mBinding;
-
-        public ViewHolder(ViewMovieAdapterSingleMovieLayoutBinding binding) {
-            super(binding.getRoot());
-            mBinding = binding;
-        }
-
-        public void bind(Movie movie) {
-            mBinding.setMovie(movie);
-            mBinding.executePendingBindings();
-        }
-    }
-
 
     @BindingAdapter({"android:src"})
     public static void showPoster(ImageView imageView, String url) {

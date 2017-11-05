@@ -4,7 +4,7 @@
     <data>
 
         <variable
-            name="movie"
+            name="obj"
             type="com.crushcoder.movie.service.response.Movie" />
     </data>
 
@@ -18,13 +18,13 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
-            android:src="@{movie.poster_path}" />
+            android:src="@{obj.poster_path}" />
 
         <TextView
             android:id="@+id/movie_adapter_tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@{movie.title}" />
+            android:text="@{obj.title}" />
     </LinearLayout>
 </layout>
