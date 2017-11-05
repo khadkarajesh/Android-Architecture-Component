@@ -1,20 +1,19 @@
 package com.crushcoder.movie.ui.movie;
 
 import android.content.Context;
+import android.databinding.BindingAdapter;
+import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.crushcoder.movie.service.response.Movie;
 import com.crushcoder.movie.R;
+import com.crushcoder.movie.databinding.ViewMovieAdapterSingleMovieLayoutBinding;
+import com.crushcoder.movie.service.response.Movie;
 
 import java.util.List;
-
-import timber.log.Timber;
 
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
@@ -28,15 +27,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_movie_adapter_single_movie_layout, parent, false);
-        return new ViewHolder(view);
+        ViewMovieAdapterSingleMovieLayoutBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
+                R.layout.view_movie_adapter_single_movie_layout,
+                parent,
+                false);
+        return new ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Timber.d("movies " + mMovies.get(position).title);
-        holder.mTvTitle.setText(mMovies.get(position).title);
-        Glide.with(mContext).load("http://image.tmdb.org/t/p/w342/" + mMovies.get(position).poster_path).into(holder.mIvPoster);
+        holder.bind(mMovies.get(position));
     }
 
     @Override
@@ -51,13 +51,22 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView mTvTitle;
-        ImageView mIvPoster;
+        private ViewMovieAdapterSingleMovieLayoutBinding mBinding;
 
-        public ViewHolder(View itemView) {
-            super(itemView);
-            mTvTitle = itemView.findViewById(R.id.movie_adapter_tv_title);
-            mIvPoster = itemView.findViewById(R.id.movie_adapter_iv_poster);
+        public ViewHolder(ViewMovieAdapterSingleMovieLayoutBinding binding) {
+            super(binding.getRoot());
+            mBinding = binding;
         }
+
+        public void bind(Movie movie) {
+            mBinding.setMovie(movie);
+            mBinding.executePendingBindings();
+        }
+    }
+
+
+    @BindingAdapter({"android:src"})
+    public static void showPoster(ImageView imageView, String url) {
+        Glide.with(imageView.getContext()).load("http://image.tmdb.org/t/p/w342/" + url).into(imageView);
     }
 }

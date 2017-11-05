@@ -11,7 +11,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.crushcoder.movie.R;
-import com.crushcoder.movie.ui.login.LoginActivity;
 
 import java.util.ArrayList;
 
@@ -44,8 +43,6 @@ public class MovieActivity extends AppCompatActivity implements HasFragmentInjec
 
         movieViewModel = ViewModelProviders.of(this, viewModelFactory).get(MovieViewModel.class);
         movieViewModel.getMovies().observe(this, movies -> movieAdapter.addMovies(movies));
-
-        LoginActivity.start(this);
     }
 
     private void initializeAdapter() {
