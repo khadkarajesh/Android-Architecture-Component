@@ -8,13 +8,13 @@ import android.support.v7.widget.RecyclerView;
 
 import com.crushcoder.movie.R;
 import com.crushcoder.movie.databinding.ActivityMovieListBinding;
-import com.crushcoder.movie.ui.base.BaseActivity;
+import com.crushcoder.movie.ui.base.BaseViewModelActivity;
 
 import java.util.ArrayList;
 
 import dagger.android.AndroidInjection;
 
-public class MovieActivity extends BaseActivity<MovieViewModel, ActivityMovieListBinding> {
+public class MovieViewModelActivity extends BaseViewModelActivity<MovieViewModel, ActivityMovieListBinding> {
     RecyclerView recyclerView;
     MovieAdapter movieAdapter;
 
@@ -40,7 +40,7 @@ public class MovieActivity extends BaseActivity<MovieViewModel, ActivityMovieLis
     }
 
     public static void start(Context context) {
-        Intent intent = new Intent(context, MovieActivity.class);
+        Intent intent = new Intent(context, MovieViewModelActivity.class);
         context.startActivity(intent);
     }
 }

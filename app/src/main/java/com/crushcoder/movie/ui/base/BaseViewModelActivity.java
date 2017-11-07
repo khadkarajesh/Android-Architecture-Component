@@ -20,7 +20,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasFragmentInjector;
 
-public abstract class BaseActivity<T extends ViewModel, B extends ViewDataBinding> extends AppCompatActivity implements HasFragmentInjector {
+public abstract class BaseViewModelActivity<T extends ViewModel, B extends ViewDataBinding> extends AppCompatActivity implements HasFragmentInjector {
     @Inject
     ViewModelProvider.Factory viewModelFactory;
 
