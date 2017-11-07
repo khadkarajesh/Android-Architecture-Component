@@ -1,8 +1,7 @@
 package com.crushcoder.movie.di;
 
 
-import com.crushcoder.movie.ui.login.LoginViewModel;
-import com.crushcoder.movie.ui.movie.MovieViewModel;
+import com.crushcoder.movie.MovieApplication;
 
 import dagger.Subcomponent;
 
@@ -14,7 +13,5 @@ public interface ViewModelSubComponent {
         ViewModelSubComponent build();
     }
 
-    MovieViewModel movieViewModel();
-
-    LoginViewModel loginViewModel();
+    void inject(MovieApplication application);
 }

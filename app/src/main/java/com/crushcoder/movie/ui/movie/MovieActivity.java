@@ -1,48 +1,35 @@
 package com.crushcoder.movie.ui.movie;
 
-import android.app.Fragment;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.crushcoder.movie.R;
+import com.crushcoder.movie.databinding.ActivityMovieListBinding;
+import com.crushcoder.movie.ui.base.BaseActivity;
 
 import java.util.ArrayList;
 
-import javax.inject.Inject;
-
 import dagger.android.AndroidInjection;
-import dagger.android.AndroidInjector;
-import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasFragmentInjector;
 
-public class MovieActivity extends AppCompatActivity implements HasFragmentInjector {
-
-    @Inject
-    DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
+public class MovieActivity extends BaseActivity<MovieViewModel, ActivityMovieListBinding> {
     RecyclerView recyclerView;
     MovieAdapter movieAdapter;
 
-    @Inject
-    ViewModelProvider.Factory viewModelFactory;
-
-    @Inject
-    MovieViewModel movieViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_list);
         initializeAdapter();
+        mViewModel.getMovies().observe(this, movies -> movieAdapter.addMovies(movies));
+    }
 
-        movieViewModel = ViewModelProviders.of(this, viewModelFactory).get(MovieViewModel.class);
-        movieViewModel.getMovies().observe(this, movies -> movieAdapter.addMovies(movies));
+    @Override
+    public int getLayout() {
+        return R.layout.activity_movie_list;
     }
 
     private void initializeAdapter() {
@@ -55,10 +42,5 @@ public class MovieActivity extends AppCompatActivity implements HasFragmentInjec
     public static void start(Context context) {
         Intent intent = new Intent(context, MovieActivity.class);
         context.startActivity(intent);
-    }
-
-    @Override
-    public AndroidInjector<Fragment> fragmentInjector() {
-        return fragmentDispatchingAndroidInjector;
     }
 }
