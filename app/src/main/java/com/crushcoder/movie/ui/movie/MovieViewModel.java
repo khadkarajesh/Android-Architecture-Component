@@ -2,10 +2,10 @@ package com.crushcoder.movie.ui.movie;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
 
 import com.crushcoder.movie.service.ApiClient;
 import com.crushcoder.movie.service.response.Movie;
+import com.crushcoder.movie.ui.base.BaseViewModel;
 
 import java.util.List;
 
@@ -13,13 +13,15 @@ import javax.inject.Inject;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 
-public class MovieViewModel extends ViewModel {
+public class MovieViewModel extends BaseViewModel {
     ApiClient apiClient;
     MutableLiveData<List<Movie>> listLiveData = new MutableLiveData<>();
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Inject
     public MovieViewModel(ApiClient apiClient) {
@@ -30,7 +32,7 @@ public class MovieViewModel extends ViewModel {
         apiClient.getMovies("popular", 1)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<List<Movie>>() {
+                .subscribeWith(new Observer<List<Movie>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
@@ -38,7 +40,7 @@ public class MovieViewModel extends ViewModel {
 
                     @Override
                     public void onNext(List<Movie> movies) {
-                        listLiveData.setValue(movies);
+
                     }
 
                     @Override
@@ -52,5 +54,16 @@ public class MovieViewModel extends ViewModel {
                     }
                 });
         return listLiveData;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
     }
 }

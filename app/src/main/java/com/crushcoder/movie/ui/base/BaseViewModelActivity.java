@@ -2,7 +2,6 @@ package com.crushcoder.movie.ui.base;
 
 
 import android.app.Fragment;
-import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
@@ -20,7 +19,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasFragmentInjector;
 
-public abstract class BaseViewModelActivity<T extends ViewModel, B extends ViewDataBinding> extends AppCompatActivity implements HasFragmentInjector {
+public abstract class BaseViewModelActivity<T extends BaseViewModel, B extends ViewDataBinding> extends AppCompatActivity implements HasFragmentInjector {
     @Inject
     ViewModelProvider.Factory viewModelFactory;
 
@@ -37,6 +36,7 @@ public abstract class BaseViewModelActivity<T extends ViewModel, B extends ViewD
         Class<T> viewModel = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         mViewModel = ViewModelProviders.of(this, viewModelFactory).get(viewModel);
         mBinding = DataBindingUtil.setContentView(this, getLayout());
+        getLifecycle().addObserver(mViewModel);
     }
 
     @Override

@@ -18,8 +18,8 @@ public class ApiClient {
         this.service = apiService;
     }
 
-    public Observable<List<Movie>> getMovies(String categories, int page){
-        return service.getMoviesInfo(categories, page, BuildConfig.MOVIE_API_KEY);
+    public Observable<List<Movie>> getMovies(String categories, int page) {
+        return service.getMoviesInfo(categories, page, BuildConfig.MOVIE_API_KEY).toObservable();
     }
 }
 
