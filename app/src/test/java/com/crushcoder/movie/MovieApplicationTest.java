@@ -1,0 +1,43 @@
+package com.crushcoder.movie;
+
+
+import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
+
+import com.crushcoder.movie.di.component.DaggerAppComponent;
+
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
+import timber.log.Timber;
+
+public class MovieApplicationTest extends Application implements HasActivityInjector {
+    static Context context;
+
+    @Inject
+    DispatchingAndroidInjector<Activity> activityDispatchingAndroidInjector;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initializeComponent();
+    }
+
+    private void initializeComponent() {
+        DaggerAppComponentTest.builder()
+                .build()
+                .inject(this);
+    }
+
+    public static Context get() {
+        return context;
+    }
+
+    @Override
+    public AndroidInjector<Activity> activityInjector() {
+        return activityDispatchingAndroidInjector;
+    }
+}
