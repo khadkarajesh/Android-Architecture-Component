@@ -24,8 +24,11 @@ public class MovieActivity extends AppCompatActivity {
     }
 
     private void setupCategory() {
+
         mCategoryTab = findViewById(R.id.movie_tab_category);
         mCategoryPager = findViewById(R.id.movie_vp_category);
+
+
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(MoviesFragment.getInstance());
         fragments.add(MoviesFragment.getInstance());
@@ -36,10 +39,10 @@ public class MovieActivity extends AppCompatActivity {
 
         List<String> titles = new ArrayList<>();
         titles.add("movies");
-        titles.add("movies");
-        titles.add("movies");
-        titles.add("movies");
-        titles.add("movies");
+        titles.add("popular");
+        titles.add("most rated");
+        titles.add("featured");
+        titles.add("hot movie");
 
 
         MovieCategoryAdapter movieCategoryAdapter = new MovieCategoryAdapter(getSupportFragmentManager(), fragments, titles);

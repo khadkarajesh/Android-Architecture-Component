@@ -8,31 +8,27 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.List;
 
 public class MovieCategoryAdapter extends FragmentPagerAdapter {
-    private List<Fragment> fragments;
+    private List<Fragment> fragmentList;
     private List<String> titles;
 
     public MovieCategoryAdapter(FragmentManager fm, List<Fragment> fragments, List<String> titles) {
         super(fm);
-        this.fragments = fragments;
+        this.fragmentList = fragments;
         this.titles = titles;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return fragments.get(position);
+        return fragmentList.get(position);
     }
 
     @Override
     public int getCount() {
-        return fragments.size();
+        return titles.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         return titles.get(position);
-    }
-
-    public List<String> getTitles() {
-        return titles;
     }
 }
