@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
+import com.crashlytics.android.Crashlytics;
 import com.crushcoder.movie.di.component.DaggerAppComponent;
 
+import io.fabric.sdk.android.Fabric;
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
@@ -22,6 +24,7 @@ public class MovieApplication extends Application implements HasActivityInjector
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         initializeComponent();
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());

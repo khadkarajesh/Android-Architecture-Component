@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "281919214082",
+    "firebase_url": "https://movie-bfafe.firebaseio.com",
+    "project_id": "movie-bfafe",
+    "storage_bucket": "movie-bfafe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281919214082:android:d8e411a3bf845640",
+        "android_client_info": {
+          "package_name": "com.crushcoder.moviesmvvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "281919214082-qfllhe4sf3jua3j662cd03tr2uvm5pak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYcajphUZ4gS7MjL5PwHxSGq8Z6K5pb5s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

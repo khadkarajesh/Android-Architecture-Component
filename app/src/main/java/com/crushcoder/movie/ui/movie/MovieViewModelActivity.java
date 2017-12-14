@@ -22,7 +22,6 @@ public class MovieViewModelActivity extends BaseViewModelActivity<MovieViewModel
     RecyclerView recyclerView;
     MovieAdapter movieAdapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
@@ -31,6 +30,8 @@ public class MovieViewModelActivity extends BaseViewModelActivity<MovieViewModel
         mViewModel.getMovies().observe(this, movies -> movieAdapter.addMovies(movies));
 
         getLifecycle().addObserver(new TestObserver());
+
+        //test data
     }
 
     @Override

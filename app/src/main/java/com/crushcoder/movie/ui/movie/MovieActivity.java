@@ -1,5 +1,6 @@
 package com.crushcoder.movie.ui.movie;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -7,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.crushcoder.movie.R;
+import com.crushcoder.movie.ui.TestActivity;
 import com.crushcoder.movie.ui.adapter.MovieCategoryAdapter;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class MovieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
+        startActivity(new Intent(this, TestActivity.class));
         setupCategory();
     }
 

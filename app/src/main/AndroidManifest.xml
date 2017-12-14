@@ -12,9 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.movie.MovieViewModelActivity">
-
-        </activity>
+        <activity android:name=".ui.movie.MovieViewModelActivity"></activity>
         <activity android:name=".ui.login.LoginActivity" />
         <activity
             android:name=".ui.movie.MovieActivity"
@@ -25,6 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.TestActivity"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="f9630b1a14998b025b22405cb429c1d99172d4e3" />
     </application>
 
 </manifest>
