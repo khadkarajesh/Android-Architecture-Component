@@ -25,12 +25,14 @@ class MovieActivity : AppCompatActivity() {
 
 
         var titles = ArrayList<String>()
-        titles.add("movies")
-        titles.add("drama")
-        titles.add("tv series")
+        titles.add("Movies")
+        titles.add("TV Shows")
+        titles.add("Music")
 
         val adapter = MovieKotlinAdapter(supportFragmentManager, fragments, titles)
         viewPager.adapter = adapter
         tab.setupWithViewPager(viewPager)
+
+
     }
 }

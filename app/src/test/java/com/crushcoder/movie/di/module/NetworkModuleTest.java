@@ -1,7 +1,5 @@
 package com.crushcoder.movie.di.module;
 
-import com.crushcoder.movie.service.ApiClient;
-import com.crushcoder.movie.service.ApiService;
 import com.google.gson.Gson;
 
 import org.mockito.Mockito;
