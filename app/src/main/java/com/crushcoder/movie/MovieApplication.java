@@ -5,14 +5,13 @@ import android.app.Application;
 import android.content.Context;
 
 import com.crashlytics.android.Crashlytics;
-import com.crushcoder.movie.di.component.DaggerAppComponent;
 
-import io.fabric.sdk.android.Fabric;
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
+import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 public class MovieApplication extends Application implements HasActivityInjector {
@@ -32,9 +31,6 @@ public class MovieApplication extends Application implements HasActivityInjector
     }
 
     private void initializeComponent() {
-        DaggerAppComponent.builder()
-                .build()
-                .inject(this);
     }
 
     public static Context get() {
